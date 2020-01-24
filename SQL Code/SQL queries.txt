@@ -1,0 +1,97 @@
+create table movie(movie_id int(3),
+		movie_name varchar(25),
+		theatre_name varchar(25), 
+		constraint pk_movie primary key(movie_id));
+
+create table seats(movie_id int(3),
+
+
+		total_seats int(2),
+		available_seats int(2),
+		cost int(3),
+		constraint fk_movie_id foreign key(movie_id) references movie(movie_id) on delete cascade,
+		constraint uk_movie_id unique(movie_id));
+
+create table billing(bill_id int(3),
+		movie_id int(3),
+		seats varchar(20),
+		address varchar(50),
+		phone_num bigint(10),
+		constraint pk_bill_id primary key(bill_id),
+		constraint fk_movie_id foreign key(movie_id) references movie(movie_id) on delete cascade);
+
+create table user_authentication(username varchar(10),
+		passwd varchar(25),		
+		constraint pk_user_name primary key(username));
+
+create table offers(offer_id varchar(10),
+		coupon_code varchar(10),
+		discount_percentage int(2),
+		max_discount int(3),
+		constraint pk_offer_id primary key(offer_id));
+
+
+insert into movie values(001,'Kaithi(Tamil)','SPI');
+insert into seats values(001,36,36,256);
+
+insert into movie values(002,'Bigil(Tamil)','PVR- VR');
+insert into seats values(002,36,36,250);
+
+insert into movie values(003,'Asuran(Tamil)','PVR- Phoenix');
+insert into seats values(003,36,36,350);
+
+insert into movie values(004,'Unda(Malayalam)','INOX- Lido');
+insert into seats values(004,36,36,450);	
+
+insert into movie values(006,'Uyare(Malayalam)','PVR- Mantri');
+insert into seats values(006,36,36,550);
+
+insert into movie values(005,'aadu(Malayalam)','Gopalan');
+insert into seats values(005,36,36,220);
+
+insert into offers values('B1','BALA150',10,20);
+insert into offers values('p1','BINGO',20,150);
+insert into offers values('w1','WEEKDAY',5,100);
+
+Clear seats-
+
+delete from seats where movie_id=1;
+delete from billing where movie_id=1;
+
+delete from seats where movie_id=2;
+delete from billing where movie_id=2;
+
+delete from seats where movie_id=3;
+delete from billing where movie_id=3;
+
+delete from seats where movie_id=4;
+delete from billing where movie_id=4;
+
+delete from seats where movie_id=5;
+delete from billing where movie_id=5;
+
+$sql="INSERT INTO billing VALUES('$bill_id',5,'$count_seats','Gopalan','$phone_number')";
+$sql="UPDATE seats SET available_seats=available_seats-$count_seats WHERE movie_id=5";
+
+
+User login-
+insert into user_authentication values('vivek','root');
+insert into user_authentication values('shreet','root1');
+
+
+TRIGGER-
+
+DELIMITER $$	
+create trigger zero_seat_conflict BEFORE INSERT ON BILLING for each row
+begin
+    if (NEW.seats =0) then
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Cannot select 0 seats';
+    end if;
+end$$
+
+STORED PROCEDURE
+
+DELIMITER $$;
+CREATE PROCEDURE job_data()
+SELECT bill_id, billing.movie_id, seats, address, phone_num, movie_name FROM billing, movie WHERE billing.movie_id=movie.movie_id;
+$$
