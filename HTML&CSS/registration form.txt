@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body {
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+    box-sizing: border-box;
+    }
+    label{
+        margin-bottom: 1.8%;
+        display:inline-block;
+        text-align: left;
+        width: 20%;
+    }
+
+    .container {
+    
+        background-color: #e5e5e5;
+        float: right;    
+        width:40% ;
+        
+        text-align: center;  
+        padding-top:5%;
+        margin-top: 3%;
+    }
+
+    input[type=text], input[type=password] {
+        width: 70%;
+        padding: 15px;
+        
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+        margin-top: 2%;
+    }
+
+    input[type=text]:focus, input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+        
+    }
+
+    .registerbtn {
+        background-color: rgb(148, 24, 24);
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border-style:solid;
+        border-radius: 15%;
+        font-size: 20px;
+        cursor: pointer;
+        width: 30%;
+        opacity: 0.9;
+    }
+
+    .registerbtn:hover {
+         opacity: 1;
+    }
+
+    a {
+        color: dodgerblue;
+    }
+
+    .signin {
+        background-color: #e5e5e5;
+        text-align: center;
+    }
+    .nav_menu {
+        position:fixed;
+        list-style-type: none;
+        margin: 0;
+        padding:1px;
+        overflow: hidden;
+        width: 100%;
+        background-color: #1f2533;
+
+    }
+
+    .nav_items {
+        float: right;
+        
+        width: 12%;
+    }
+    .logo{
+        z-index: 2;
+        width: 11%;
+        position:fixed;
+    }
+    .nav_items a {
+        display: block;
+        color: white;
+        padding: 12px;
+        text-align: center;
+        text-decoration: none;
+    }
+    .nav_items a:hover {
+        background-color: #5f5553;
+    }
+    body{
+        background-color: #e5e5e5;
+        margin:0;
+    }
+
+    .movie_titles{    
+        display:flex;
+        flex-wrap:wrap;
+        justify-content: flex-start;    
+        
+        
+    }
+
+    .poster{
+
+    }
+
+    .bg{
+        height:80%;
+        position:absolute;
+        z-index: -1;
+        opacity: 0.5;
+        margin-top:7%;
+    }
+    .poster_container{
+        margin: 0 2% 1% 0; 
+        font-size: 0.7em;
+        text-align: center;
+    }
+
+    .navigation{
+        display: flex;
+        
+        justify-content: space-between;
+    }
+            
+</style>
+</head>
+<body>
+        <img class="bg" src="popcorn.png"/>
+        
+        <div class="navigation">
+           
+                <ul class="nav_menu">
+                    <li class="nav_items"><a href="#Contact Us">Contact Us</a></li>
+                    <li class="nav_items"><a href="#About Us">About Us</a></li>
+                    <li class="nav_items"><a href="#Offers">Offers</a></li>
+                    <li class="nav_items"><a class="active" href="#Home">Home</a></li>
+                </ul>
+                <img class="logo" width="12%" src ="myyy.jpeg">
+        </div>
+
+<form action="/action_page.php">
+  <div class="container">
+    <h1>WelcomeTo Make My Show!</h1>
+    <p>Please fill in this form to create an account.</p>
+    <br>
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" name="name" required><br>
+
+    <label for="phone number"><b>Phone Number</b></label>
+    <input type="text" placeholder="Enter Phone Number" name="phone number" required><br>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required><br>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required><br>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required><br>
+    <br>
+    
+
+    <button type="submit" class="registerbtn">Register</button>
+    <p>Already have an account? <a href="#">Sign in</a>.</p>
+  </div>
+  
+  <div class="container signin">
+    
+  </div>
+</form>
+
+</body>
+</html>
